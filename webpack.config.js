@@ -26,9 +26,28 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                     'sass-loader'
-                ],
+                ]
             },
-        ],
+            {
+                test: /.\html$/,
+                use: ['html-loader'],
+            },
+            {
+                test:/\.(jpeg|jpg|svg|png|gif)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]', 
+                            esModule: false,
+                            outputPath: 'img/',
+                            publicPath: 'img/'
+                        }
+                    }
+                ]
+            }
+            
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin ({
