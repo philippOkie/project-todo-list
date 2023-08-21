@@ -1,13 +1,16 @@
 @import url(./reset.scss);
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@500&display=swap');
 
-$base-color: #118AB2;
+$base-color: #f9f9f9;
 $red: #EF476F;
 $green: #06D6A0;
 $yellow: #FFD166;
+$bkcolor: #04080f;
+$br: 1px;
+$brWdth: 2px;
 
 body {
-    background-color: white;
+    background-color: $bkcolor;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,21 +33,22 @@ body {
         grid-template-columns: 90% 10%;
        
         .folderName {
-            border: 5px solid $base-color;
+            border: $brWdth solid $base-color;
             width: 100%;
             height: 100%;
-            border-radius: 24px;
+            border-radius: $br;
+            border-top: 0;
+            border-left: 0;
         }
         
         .delFolderBtn {
-            background-color: white;
+            background-color: $bkcolor;
             color: $red;
-            border: 5px solid $red;
+            border: $brWdth solid $red;
             font-size: 2.5em;
-            border-radius: 24px;
+            border-radius: $br;
             margin-left: 0.9rem;
-            transition: all 0.3s;
-            background: white;
+            transition: all 0.4s;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -52,20 +56,72 @@ body {
         .delFolderBtn:hover {
             background: $red;
             color: white;
-            font-size: 3em;
-
+            
         }
     }
 
     .sidebar {
-        border: 5px solid $base-color;
+        border: $brWdth solid $base-color;
         grid-column: 1 / 1;
-        border-radius: 24px;
+        border-radius: $br;
+        display: grid;
+        grid-template-rows: 8% 92%;
+        padding-top: 1rem;
+        border-bottom: 0;
+        border-left: 0;
+
+        .controlFolder {
+            border-radius: $br;
+            width: 90%;
+            height: 100%;
+            display: flex;
+            justify-self: center;
+            justify-content: space-between;
+            align-self: center;
+
+            .titleFolder {
+                width: 72%;
+                background-color: transparent;
+                border: $brWdth solid $base-color;
+                padding: .5rem;
+                border-radius: $br;
+                outline: none;
+                opacity: .8;
+                transition: .2s ease-in-out;
+                font-size: 2rem;
+                color: $base-color;
+            }
+
+            .titleFolder:focus {
+                opacity: 1; 
+            }
+
+            .addFolderBtn {
+                border: $brWdth solid $green;
+                color: $green;
+                border-radius: $br;
+                font-size: 2.3em;
+                width: 25%;
+                transition: all 0.4s;
+                background: $bkcolor;
+            }
+            .addFolderBtn:hover {
+                background: $green;
+                color: white;
+            }
+        }
     }
 
     .notes {
-        border: 5px solid $base-color;
-        border-radius: 24px;
+        border: $brWdth solid $base-color;
+        border-radius: $br;
+        border-bottom: 0;
+        border-right: 0;
     }
 }
 
+
+  
+  
+  
+  
