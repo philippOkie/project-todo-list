@@ -8,25 +8,31 @@
 <body>
     <div class="generalContainer">
         <div class="header">
-            <div class="currFolder" id="currFolder">Name of the folder</div>
+            <div class="currFolder" id="currFolder">Welcome!</div>
         </div>
         <div class="sidebar">
             <div class="folderContainer" id="folderContainer">
                 <form class="controlFolder" id="controlFolder">
-                    <input class='titleFolder' id="titleFolder" type="text" placeholder="Title">
-                    <button class="addFolderBtn">Add</button>
+                    <input class='titleFolder' id="titleFolder" type="text" placeholder="Title" required>
+                    <button class="addBtn">Add</button>
                 </form> 
                 <div class="newFolder">
                     <button class="folderName" id="todayFolder">Today</button>
-                    <button class="delFolderBtn">Delete</button>
+                    <button class="delBtn">Del</button>
                 </div>
                 <div class="newFolder">
                     <button class="folderName" id="upcomingFolder">Upcoming</button>
-                    <button class="delFolderBtn">Delete</button>
+                    <button class="delBtn">Del</button>
                 </div>
             </div>
         </div>
-        <div class="notes" id="notes"></div>
+        <div class="notes" id="notes">
+            <form class="controlNotes" id="controlNotes">
+                <input class='titleNote' id="titleNote" type="text" placeholder="Title" required>
+                <button class="addBtn">Add</button>
+            </form> 
+            
+        </div>
     </div>
 </body>
 </html>

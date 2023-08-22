@@ -8,12 +8,12 @@ $yellow: #FFD166;
 $bkcolor: #f9f9f9;
 $br: 5px;
 $brWdth: 2px;
-::-webkit-scrollbar {
-  display: none;
-}
+
+::-webkit-scrollbar {display: none;}
 
 body {
     background-color: $bkcolor;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,6 +23,7 @@ body {
     font-family: 'Chivo', sans-serif;
     width: 90%;
     height: 90%;
+
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: 10% 90%;
@@ -34,27 +35,28 @@ body {
         grid-column: 1 / 3;
        
         .currFolder {
-            
             border: $brWdth solid $base-color;
             width: 100%;
             height: 100%;
             border-radius: $br;
             border-top: 0;
             border-left: 0;
+            font-size: 5em;
             color: $base-color;
+
             display: flex;
             align-items: flex-end;
-            font-size: 5em;
         }
     }
 
     .sidebar {
+        display: flex;
+        flex-direction: column;
+
         border: $brWdth solid $base-color;
         grid-column: 1 / 1;
         border-radius: $br;
-        display: flex;
-        flex-direction: column;
-        padding-top: 1rem;
+        padding-top: 10px;
         border-bottom: 0;
         border-left: 0;
 
@@ -62,13 +64,14 @@ body {
             border-radius: $br;
             margin-bottom: 1em;
             width: 90%;
+
             display: flex;
             justify-self: center;
             align-self: center;
             justify-content: space-between;
             
             .titleFolder {
-                width: 72%;
+                width: 80%;
                 height: 100%;
                 background-color: transparent;
                 border: $brWdth solid $base-color;
@@ -83,14 +86,8 @@ body {
                 border-top: none;
                 border-left: none;
             }
-
-            .titleFolder:focus {
-                opacity: 1;
-            }
-            .titleFolder:hover {
-                opacity: 1;
-            }
-
+            .titleFolder:focus {opacity: 1;}
+            .titleFolder:hover {opacity: 1;}
         }
     }
 
@@ -99,11 +96,44 @@ body {
         border-radius: $br;
         border-bottom: 0;
         border-right: 0;
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+
+        .controlNotes {
+            border-radius: $br;
+            margin-bottom: 1em;
+            width: 90%;
+
+            display: flex;
+            justify-self: center;
+            align-self: center;
+            justify-content: space-between;
+
+            .titleNote {
+                width: 20%;
+                height: 100%;
+                background-color: transparent;
+                border: $brWdth solid $base-color;
+                padding: .5rem;
+                border-radius: $br;
+                outline: none;
+                opacity: .8;
+                transition: .2s ease-in-out;
+                font-size: 2rem;
+                color: $base-color;
+                opacity: 0.8; 
+                border-top: none;
+                border-left: none;
+            }
+            .titleNote:focus {opacity: 1;}
+            .titleNote:hover {opacity: 1;}
+        }
     }
 }
 
 .folderContainer {
-    padding-top: 1rem;
+    padding-top: 10px;
     border-bottom: 0;
     border-left: 0;
     overflow-y: scroll;
@@ -121,7 +151,7 @@ body {
         transition: .2s ease-in-out;
         font-size: 2rem;
         color: $base-color;
-        width: 70%;
+        width: 80%;
         height: 2em;
         border-top: none;
         border-left: none;
@@ -137,18 +167,16 @@ body {
         align-self: center;
         margin-bottom: 1.5em; 
     }
-    .folderName:hover {
-        opacity: 1;
-    }
+    .folderName:hover {opacity: 1;}
     .folderName:active {color: $bkcolor; border: $bkcolor;}
 }
 
-.addFolderBtn {
+.addBtn {
     border: none;
     color: $green;
     border-radius: $br;
     font-size: 2.3em;
-    width: 25%;
+    width: 20%;
     height: 2em;
     transition: all 0.4s;
     background: $bkcolor;
@@ -165,7 +193,7 @@ body {
     z-index: 1;
     
 }
-.addFolderBtn::before {
+.addBtn::before {
     content: "";
     position: absolute;
     top: 0;
@@ -177,16 +205,16 @@ body {
     transition: all 0.5s;
     border-radius: $br;
 }
-.addFolderBtn:hover::before {width: 100%; border-radius: $br;}
-.addFolderBtn:hover {color: $bkcolor; border-radius: $br;}
-.addFolderBtn:active:before {background: $bkcolor; border-radius: $br;}
+.addBtn:hover::before {width: 100%; border-radius: $br;}
+.addBtn:hover {color: $bkcolor; border-radius: $br;}
+.addBtn:active:before {background: $bkcolor; border-radius: $br;}
 
-.delFolderBtn {
+.delBtn {
     border: none;
     color: $red;
     border-radius: $br;
     font-size: 2.3em;
-    width: 25%;
+    width: 20%;
     transition: all 0.4s;
     background: $bkcolor;
     margin-left: 0.9rem;
@@ -201,7 +229,7 @@ body {
     transition: all 0.5s;
     z-index: 1;
 }
-.delFolderBtn::before {
+.delBtn::before {
     content: "";
     position: absolute;
     top: 0;
@@ -213,9 +241,9 @@ body {
     transition: all 0.5s;
     border-radius: $br;
 }
-.delFolderBtn:hover::before {width: 100%; border-radius: $br;}   
-.delFolderBtn:hover {color: $bkcolor; border-radius: $br;}
-.delFolderBtn:active:before {background: $bkcolor; border-radius: $br;}
+.delBtn:hover::before {width: 100%; border-radius: $br;}   
+.delBtn:hover {color: $bkcolor; border-radius: $br;}
+.delBtn:active:before {background: $bkcolor; border-radius: $br;}
   
   
   
