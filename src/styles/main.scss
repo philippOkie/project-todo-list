@@ -8,6 +8,9 @@ $yellow: #FFD166;
 $bkcolor: #f9f9f9;
 $br: 5px;
 $brWdth: 2px;
+::-webkit-scrollbar {
+  display: none;
+}
 
 body {
     background-color: $bkcolor;
@@ -29,10 +32,9 @@ body {
     .header {
         grid-row: 1 / 2;
         grid-column: 1 / 3;
-        display: grid;
-        grid-template-columns: 90% 10%;
        
-        .folderName {
+        .currFolder {
+            
             border: $brWdth solid $base-color;
             width: 100%;
             height: 100%;
@@ -50,23 +52,24 @@ body {
         border: $brWdth solid $base-color;
         grid-column: 1 / 1;
         border-radius: $br;
-        display: grid;
-        grid-template-rows: 8% 92%;
+        display: flex;
+        flex-direction: column;
         padding-top: 1rem;
         border-bottom: 0;
         border-left: 0;
 
         .controlFolder {
             border-radius: $br;
+            margin-bottom: 1em;
             width: 90%;
-            height: 100%;
             display: flex;
             justify-self: center;
-            justify-content: space-between;
             align-self: center;
-
+            justify-content: space-between;
+            
             .titleFolder {
                 width: 72%;
+                height: 100%;
                 background-color: transparent;
                 border: $brWdth solid $base-color;
                 padding: .5rem;
@@ -76,10 +79,15 @@ body {
                 transition: .2s ease-in-out;
                 font-size: 2rem;
                 color: $base-color;
-                opacity: 0.7; 
+                opacity: 0.8; 
+                border-top: none;
+                border-left: none;
             }
 
             .titleFolder:focus {
+                opacity: 1;
+            }
+            .titleFolder:hover {
                 opacity: 1;
             }
 
@@ -94,10 +102,88 @@ body {
     }
 }
 
+.folderContainer {
+    padding-top: 1rem;
+    border-bottom: 0;
+    border-left: 0;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .folderName {
+        background-color: transparent;
+        border: $brWdth solid $base-color;
+        padding: .5rem;
+        border-radius: $br;
+        outline: none;
+        opacity: .8;
+        transition: .2s ease-in-out;
+        font-size: 2rem;
+        color: $base-color;
+        width: 70%;
+        height: 2em;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        opacity: 0.7;
+    }
+    .newFolder {
+        border-radius: $br;
+        width: 90%;
+        display: flex;
+        justify-self: center;
+        justify-content: space-between;
+        align-self: center;
+        margin-bottom: 1.5em; 
+    }
+    .folderName:hover {
+        opacity: 1;
+    }
+    .folderName:active {color: $bkcolor; border: $bkcolor;}
+}
 
 .addFolderBtn {
     border: none;
     color: $green;
+    border-radius: $br;
+    font-size: 2.3em;
+    width: 25%;
+    height: 2em;
+    transition: all 0.4s;
+    background: $bkcolor;
+    margin-left: 0.9rem;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 1;
+    
+}
+.addFolderBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: $green;
+    z-index: -1;
+    transition: all 0.5s;
+    border-radius: $br;
+}
+.addFolderBtn:hover::before {width: 100%; border-radius: $br;}
+.addFolderBtn:hover {color: $bkcolor; border-radius: $br;}
+.addFolderBtn:active:before {background: $bkcolor; border-radius: $br;}
+
+.delFolderBtn {
+    border: none;
+    color: $red;
     border-radius: $br;
     font-size: 2.3em;
     width: 25%;
@@ -115,39 +201,6 @@ body {
     transition: all 0.5s;
     z-index: 1;
 }
-.addFolderBtn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
-    background-color: $green;
-    z-index: -1;
-    transition: all 0.5s;
-}
-.addFolderBtn:hover::before {width: 100%;}
-.addFolderBtn:hover {color: $bkcolor;}
-.addFolderBtn:active:before {background: $bkcolor;}
-
-.delFolderBtn {
-    background-color: $bkcolor;
-    color: $red;
-    font-size: 2.5em;
-    border-radius: $br;
-    margin-left: 0.9rem;
-    transition: all 0.4s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    font-weight: 600;
-    position: relative;
-    transition: all 0.5s;
-    z-index: 1;
-}
 .delFolderBtn::before {
     content: "";
     position: absolute;
@@ -158,10 +211,11 @@ body {
     background-color: $red;
     z-index: -1;
     transition: all 0.5s;
+    border-radius: $br;
 }
-.delFolderBtn:hover::before {width: 100%;}   
-.delFolderBtn:hover {color: $bkcolor;}
-.delFolderBtn:active:before {background: $bkcolor;}
+.delFolderBtn:hover::before {width: 100%; border-radius: $br;}   
+.delFolderBtn:hover {color: $bkcolor; border-radius: $br;}
+.delFolderBtn:active:before {background: $bkcolor; border-radius: $br;}
   
   
   
