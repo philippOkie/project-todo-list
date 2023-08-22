@@ -25,7 +25,7 @@ body {
     height: 90%;
 
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 25% 75%;
     grid-template-rows: 10% 90%;
     gap: 1em;
     
@@ -103,15 +103,15 @@ body {
         .controlNotes {
             border-radius: $br;
             margin-bottom: 1em;
-            width: 90%;
+            width: 98%;
 
             display: flex;
             justify-self: center;
             align-self: center;
             justify-content: space-between;
 
-            .titleNote {
-                width: 20%;
+            .inputNote {
+                width: 18%;
                 height: 100%;
                 background-color: transparent;
                 border: $brWdth solid $base-color;
@@ -126,8 +126,8 @@ body {
                 border-top: none;
                 border-left: none;
             }
-            .titleNote:focus {opacity: 1;}
-            .titleNote:hover {opacity: 1;}
+            .inputNote:focus {opacity: 1;}
+            .inputNote:hover {opacity: 1;}
         }
     }
 }
@@ -245,5 +245,79 @@ body {
 .delBtn:hover {color: $bkcolor; border-radius: $br;}
 .delBtn:active:before {background: $bkcolor; border-radius: $br;}
   
+input[type="radio"] {
+    left: -999em;
+    position: absolute;
+}
+
+.radio-input {
+    display: none;
+}
   
+.radio-input {
+    --container_width: 190px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: $br;
+    background-color: $bkcolor;
+    color: $base-color;
+    width: var(--container_width);
+    overflow: hidden;
+    border: $brWdth solid $base-color;
+    border-top: none;
+    border-left: none;
+    opacity: 0.8;
+}
   
+.radio-input label {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-weight: 600;
+    letter-spacing: -1px;
+    font-size: 1.1em;
+}
+
+.selection {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: calc(var(--container_width) / 3);
+    z-index: 0;
+    left: 0;
+    top: 0;
+    transition: .15s ease;
+}
+  
+.radio-input label:has(input:checked) {
+    color: $bkcolor;
+}
+  
+.radio-input label:has(input:checked) ~ .selection {
+    display: inline-block;
+}
+  
+.radio-input label:nth-child(1):has(input:checked) ~ .selection {
+    transform: translateX(calc(var(--container_width) * 0/3));
+    background-color: $green;
+    opacity: 1;
+}
+  
+.radio-input label:nth-child(2):has(input:checked) ~ .selection {
+    transform: translateX(calc(var(--container_width) * 1/3));
+    background-color: $yellow;
+    opacity: 1;
+}
+  
+.radio-input label:nth-child(3):has(input:checked) ~ .selection {
+    transform: translateX(calc(var(--container_width) * 2/3));
+    background-color: $red;
+    opacity: 1;
+}
+

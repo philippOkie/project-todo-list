@@ -28,10 +28,30 @@
         </div>
         <div class="notes" id="notes">
             <form class="controlNotes" id="controlNotes">
-                <input class='titleNote' id="titleNote" type="text" placeholder="Title" required>
+                <input class='inputNote' id="titleNote" type="text" placeholder="Title" required>
+                <input class='inputNote' id="txtNote" type="text" placeholder="Note here!" required>
+                <input class='inputNote' id="dateNote" type="date" placeholder="Note here!" required>
+                <div class="priority">
+                    <div class="radio-input">
+                        <label>
+                            <input type="radio" id="value-1" name="value-radio" value="value-1">
+                            <span>L</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" id="value-2" name="value-radio" value="value-2">
+                            <span>M</span>
+                        </label>    
+
+                        <label>
+                            <input type="radio" id="value-3" name="value-radio" value="value-3">
+                            <span>H</span>
+                        </label>
+                        <span class="selection"></span>
+                      </div>
+                </div>
                 <button class="addBtn">Add</button>
             </form> 
-            
         </div>
     </div>
 </body>
