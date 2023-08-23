@@ -9,7 +9,14 @@ $bkcolor: #f9f9f9;
 $br: 5px;
 $brWdth: 2px;
 
+.wOneNine{max-width: 190px}
+.leftBorder{border-left: $brWdth solid $base-color;}
+
 ::-webkit-scrollbar {display: none;}
+
+* {
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: $bkcolor;
@@ -17,6 +24,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .generalContainer {
@@ -82,7 +90,6 @@ body {
                 transition: .2s ease-in-out;
                 font-size: 2rem;
                 color: $base-color;
-                opacity: 0.8; 
                 border-top: none;
                 border-left: none;
             }
@@ -99,12 +106,13 @@ body {
         display: flex;
         flex-direction: column;
         padding-top: 20px;
+        overflow: scroll;
 
         .controlNotes {
             border-radius: $br;
             margin-bottom: 1em;
             width: 98%;
-
+            
             display: flex;
             justify-self: center;
             align-self: center;
@@ -122,7 +130,7 @@ body {
                 transition: .2s ease-in-out;
                 font-size: 2rem;
                 color: $base-color;
-                opacity: 0.8; 
+                
                 border-top: none;
                 border-left: none;
             }
@@ -131,41 +139,58 @@ body {
         }
         .note {
             display: flex;
-            
+            flex-direction: row;
             justify-content: space-around;
-            width: 100%;
-            height: auto;
+            padding-top: 20px;
             .noteContent {
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-
-                padding: .5rem;
-                border: $brWdth solid $base-color;
-                border-top: none;
-                border-left: none;
-                border-right: none;
+                border-radius: $br;
+                margin-bottom: 1em;
                 width: 98%;
+    
+                display: flex;
+                justify-self: center;
+                align-self: center;
+                justify-content: space-between
             }
+            
+            .noteElement{
+                width: 18%;
+                height: 100%;
+                background-color: transparent;
+                border-bottom: $brWdth solid $base-color;
+                padding: .5rem;
+                border-radius: $br;
+                outline: none;
+                opacity: .8;
+                transition: .2s ease-in-out;
+                font-size: 2rem;
+                color: $base-color;
+                opacity: 0.8; 
+                
+            }
+            .doubleWNE {width: 36%;}
+            .lowPrior {background-color: #06D6A0; color:#f9f9f9; border: none; opacity: 1;}
+            .midPrior{background-color: #FFD166; color:#f9f9f9; border: none; opacity: 1;}
+            .highPrior{background-color: #EF476F; color:#f9f9f9; border: none; opacity: 1;}
+            .noteElement:hover {
+                opacity: 1;
+            }
+
             .tooltip {
                 position: relative;
                 display: inline-block;
-                border-bottom: 1px dotted black;
             }
               
             .tooltip .tooltiptext {
                 visibility: hidden;
-                width: 120px;
+                width: 20em;
                 color: black;
                 text-align: center;
                 border-radius: 6px;
                 padding: 5px 0;
                 position: absolute;
                 z-index: 1;
-                border:3px solid black;
-                bottom: 100%;
-                left: 50%;
-                margin-left: -60px;
-                background-color:white;
+                background-color: $bkcolor;
                 opacity: 0;
                 transition: opacity 1s;
             }
@@ -173,6 +198,12 @@ body {
             .tooltip:hover .tooltiptext {
                 visibility: visible;
                 opacity: 1;
+                top: 100%;
+                left: 50%;
+                margin-left: -60px;
+                margin-bottom: 20em;
+                background-color: $bkcolor;
+                border-radius: $br;
             }
         }
     }
@@ -204,6 +235,7 @@ body {
         border-right: none;
         opacity: 0.7;
     }
+
     .newFolder {
         border-radius: $br;
         width: 90%;
