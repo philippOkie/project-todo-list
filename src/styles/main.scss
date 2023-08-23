@@ -129,6 +129,52 @@ body {
             .inputNote:focus {opacity: 1;}
             .inputNote:hover {opacity: 1;}
         }
+        .note {
+            display: flex;
+            
+            justify-content: space-around;
+            width: 100%;
+            height: auto;
+            .noteContent {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+
+                padding: .5rem;
+                border: $brWdth solid $base-color;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                width: 98%;
+            }
+            .tooltip {
+                position: relative;
+                display: inline-block;
+                border-bottom: 1px dotted black;
+            }
+              
+            .tooltip .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                color: black;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+                position: absolute;
+                z-index: 1;
+                border:3px solid black;
+                bottom: 100%;
+                left: 50%;
+                margin-left: -60px;
+                background-color:white;
+                opacity: 0;
+                transition: opacity 1s;
+            }
+              
+            .tooltip:hover .tooltiptext {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -249,11 +295,7 @@ input[type="radio"] {
     left: -999em;
     position: absolute;
 }
-
-.radio-input {
-    display: none;
-}
-  
+.radio-input {display: none;} 
 .radio-input {
     --container_width: 190px;
     height: 100%;
@@ -270,7 +312,6 @@ input[type="radio"] {
     border-left: none;
     opacity: 0.8;
 }
-  
 .radio-input label {
     width: 100%;
     padding: 10px;
@@ -283,7 +324,6 @@ input[type="radio"] {
     letter-spacing: -1px;
     font-size: 1.1em;
 }
-
 .selection {
     display: none;
     position: absolute;
@@ -293,28 +333,23 @@ input[type="radio"] {
     left: 0;
     top: 0;
     transition: .15s ease;
-}
-  
+} 
 .radio-input label:has(input:checked) {
     color: $bkcolor;
-}
-  
+}  
 .radio-input label:has(input:checked) ~ .selection {
     display: inline-block;
-}
-  
+} 
 .radio-input label:nth-child(1):has(input:checked) ~ .selection {
     transform: translateX(calc(var(--container_width) * 0/3));
     background-color: $green;
     opacity: 1;
-}
-  
+} 
 .radio-input label:nth-child(2):has(input:checked) ~ .selection {
     transform: translateX(calc(var(--container_width) * 1/3));
     background-color: $yellow;
     opacity: 1;
-}
-  
+} 
 .radio-input label:nth-child(3):has(input:checked) ~ .selection {
     transform: translateX(calc(var(--container_width) * 2/3));
     background-color: $red;

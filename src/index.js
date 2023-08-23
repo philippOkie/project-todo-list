@@ -27,10 +27,23 @@ const currFolder = document.getElementById('currFolder')
 const submitForm = document.getElementById('controlFolder')
 const titleFolder = document.getElementById('titleFolder')
 const controlFolder = document.getElementById('controlFolder')
+// note inputs
+const controlNotesForm = document.getElementById("controlNotes")
+const titleNote = document.getElementById('titleNote')
+const txtNote = document.getElementById('txtNote')
+const dateNote = document.getElementById('dateNote')
+const valueOne = document.getElementById('value-1')
+const valueTwo = document.getElementById('value-2')
+const valueThree = document.getElementById('value-3')
 
 submitForm.addEventListener('submit', (e) => {
     e.preventDefault()
     createFolder()
+})
+
+controlNotesForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    createNote()
 })
 
 function createFolder() {
@@ -68,6 +81,10 @@ function createFolder() {
         currFolder.innerHTML = titleFolder
     })
     controlFolder.reset()
+}
+
+function createNote() {
+
 }
 
 function populateFolderStorage() {
