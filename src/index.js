@@ -3,6 +3,7 @@ import './styles/main.scss'
 let myFolders = []
 let folderId = 0
 let noteId = 0
+let priority = 0
 
 class Note {
     constructor(noteTitle, description, dueDate, priority) {
@@ -25,16 +26,9 @@ class Folder {
 const folderContainer = document.getElementById('folderContainer')
 const currFolder = document.getElementById('currFolder')
 const submitForm = document.getElementById('controlFolder')
-const titleFolder = document.getElementById('titleFolder')
 const controlFolder = document.getElementById('controlFolder')
-// note inputs
 const controlNotesForm = document.getElementById("controlNotes")
-const titleNote = document.getElementById('titleNote')
-const txtNote = document.getElementById('txtNote')
-const dateNote = document.getElementById('dateNote')
-const valueOne = document.getElementById('value-1')
-const valueTwo = document.getElementById('value-2')
-const valueThree = document.getElementById('value-3')
+const notesContainer = document.getElementById('notes')
 
 submitForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -84,7 +78,34 @@ function createFolder() {
 }
 
 function createNote() {
+    let titleNote = document.getElementById('titleNote').value
+    let txtNote = document.getElementById('txtNote').value
+    let dateNote = document.getElementById('dateNote').value
+    let lowPrior= document.getElementById('value-1').value
+    let midPrior = document.getElementById('value-2').value
+    let highPrior = document.getElementById('value-3').value
 
+    const newNote = document.createElement('note')
+    notesContainer.appendChild(newNote)
+    newNote.classList.add('note')
+}
+
+function priorityChecker() {
+    if(document.getElementById('value-1').clicked == true)
+    {   
+        return priority = 1
+    }
+    else if(document.getElementById('value-2').clicked == true)
+    {   
+        return priority = 2
+    }
+    else if(document.getElementById('value-3').clicked == true)
+    {   
+        return priority = 3
+    }
+    else {   
+        return priority = 0
+    }
 }
 
 function populateFolderStorage() {
