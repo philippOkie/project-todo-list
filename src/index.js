@@ -3,7 +3,6 @@ import './styles/main.scss'
 let myFolders = []
 let folderId = 0
 let noteId = 0
-let priority = 0
 
 class Note {
     constructor(noteTitle, description, dueDate, priority) {
@@ -81,35 +80,81 @@ function createNote() {
     let titleNote = document.getElementById('titleNote').value
     let txtNote = document.getElementById('txtNote').value
     let dateNote = document.getElementById('dateNote').value
-    let lowPrior= document.getElementById('value-1').value
-    let midPrior = document.getElementById('value-2').value
-    let highPrior = document.getElementById('value-3').value
+    const lowPrior= document.getElementById('value-1')
+    const midPrior = document.getElementById('value-2')
+    const highPrior = document.getElementById('value-3')
 
     const newNote = document.createElement('note')
     notesContainer.appendChild(newNote)
     newNote.classList.add('note')
+
+    const toolTip = document.createElement('div')
+    newNote.appendChild(toolTip)
+    toolTip.innerHTML = titleNote
+    toolTip.classList.add('noteElement')
+    toolTip.classList.add('tooltip')
+    toolTip.classList.add('leftBorder')
+    toolTip.classList.add('doubleWNE')
+
+    if (txtNote !== '') {
+        const toolTipSpan = document.createElement('span')
+        toolTip.appendChild(toolTipSpan)
+        toolTipSpan.classList.add('tooltiptext')
+        toolTipSpan.innerHTML = txtNote         
+    }
+
+    const dueDate = document.createElement('div')
+    newNote.appendChild(dueDate)
+    dueDate.classList.add('noteElement')
+    dueDateChecker(dateNote, dueDate)
+
+    const prior = document.createElement('div')
+    newNote.appendChild(prior)
+    prior.classList.add('noteElement')
+    let priority = ''
+    if(lowPrior.checked)
+    {   
+        priority = 'Low-Priority'
+        prior.classList.add('lowPrior')
+    }
+    if(midPrior.checked)
+    {   
+        priority = 'Medium-Priority' 
+        prior.classList.add('midPrior')
+    }
+    if(highPrior.checked)
+    {   
+        priority = 'High-Priority'
+        prior.classList.add('highPrior')
+    }
+    else {   
+        priority = "Low-Priority"
+    }
+    // prior.classList.add('lowPrior')
+    prior.innerHTML = priority
+    
+    const deleteNoteBtn = document.createElement("button")
+    deleteNoteBtn.innerHTML = "Del"
+    deleteNoteBtn.classList.add('delBtn')
+    deleteNoteBtn.setAttribute("id", 'deleteNoteBtn')
+    newNote.appendChild(deleteNoteBtn)
 }
 
 function priorityChecker() {
-    if(document.getElementById('value-1').clicked == true)
-    {   
-        return priority = 1
-    }
-    else if(document.getElementById('value-2').clicked == true)
-    {   
-        return priority = 2
-    }
-    else if(document.getElementById('value-3').clicked == true)
-    {   
-        return priority = 3
-    }
-    else {   
-        return priority = 0
-    }
+    
 }
 
 function populateFolderStorage() {
 
+}
+
+function dueDateChecker(dateNote, dueDate) {
+    if (dateNote !== '') {
+        return dueDate.innerHTML = dateNote
+    }
+    else {
+        return dueDate.innerHTML = "No due-date!"
+    }
 }
 
 const todayFolder = document.getElementById('todayFolder')

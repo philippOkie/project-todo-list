@@ -70,7 +70,7 @@ body {
 
         .controlFolder {
             border-radius: $br;
-            margin-bottom: 1em;
+            margin-bottom: 2em;
             width: 90%;
 
             display: flex;
@@ -154,7 +154,7 @@ body {
             }
             
             .noteElement{
-                width: 18%;
+                width: 19%;
                 height: 100%;
                 background-color: transparent;
                 border-bottom: $brWdth solid $base-color;
