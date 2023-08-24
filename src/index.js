@@ -25,7 +25,7 @@ class Folder {
 const folderContainer = document.getElementById('folderContainer')
 const currFolder = document.getElementById('currFolder')
 const submitForm = document.getElementById('controlFolder')
-const controlFolder = document.getElementById('controlFolder')
+const controlFolderForm = document.getElementById('controlFolder')
 const controlNotesForm = document.getElementById("controlNotes")
 const notesContainer = document.getElementById('notes')
 
@@ -73,7 +73,7 @@ function createFolder() {
     newFolder.addEventListener('click', () => {
         currFolder.innerHTML = titleFolder
     })
-    controlFolder.reset()
+    controlFolderForm.reset()
 }
 
 function createNote() {
@@ -95,7 +95,6 @@ function createNote() {
     toolTip.classList.add('tooltip')
     toolTip.classList.add('leftBorder')
     toolTip.classList.add('doubleWNE')
-
     if (txtNote !== '') {
         const toolTipSpan = document.createElement('span')
         toolTip.appendChild(toolTipSpan)
@@ -112,36 +111,15 @@ function createNote() {
     newNote.appendChild(prior)
     prior.classList.add('noteElement')
     let priority = ''
-    if(lowPrior.checked)
-    {   
-        priority = 'Low-Priority'
-        prior.classList.add('lowPrior')
-    }
-    if(midPrior.checked)
-    {   
-        priority = 'Medium-Priority' 
-        prior.classList.add('midPrior')
-    }
-    if(highPrior.checked)
-    {   
-        priority = 'High-Priority'
-        prior.classList.add('highPrior')
-    }
-    else {   
-        priority = "Low-Priority"
-    }
-    // prior.classList.add('lowPrior')
-    prior.innerHTML = priority
+    priorityChecker(lowPrior, midPrior, highPrior, prior, priority)
     
     const deleteNoteBtn = document.createElement("button")
     deleteNoteBtn.innerHTML = "Del"
     deleteNoteBtn.classList.add('delBtn')
     deleteNoteBtn.setAttribute("id", 'deleteNoteBtn')
     newNote.appendChild(deleteNoteBtn)
-}
 
-function priorityChecker() {
-    
+    controlNotesForm.reset()
 }
 
 function populateFolderStorage() {
@@ -154,6 +132,24 @@ function dueDateChecker(dateNote, dueDate) {
     }
     else {
         return dueDate.innerHTML = "No due-date!"
+    }
+}
+
+function priorityChecker(lowPrior, midPrior, highPrior, prior, priority) {
+    if(lowPrior.checked)
+    {   
+        return priority = 'Low-Priority', prior.classList.add('lowPrior'), prior.innerHTML = priority
+    }
+    else if(midPrior.checked)
+    {   
+        return priority = 'Mid-Priority' , prior.classList.add('midPrior'), prior.innerHTML = priority
+    }
+    else if(highPrior.checked)
+    {   
+        return priority = 'High-Priority', prior.classList.add('highPrior'), prior.innerHTML = priority
+    }
+    else {   
+        return priority = "Low-Priority", prior.classList.add('lowPrior'), prior.innerHTML = priority
     }
 }
 

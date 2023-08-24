@@ -2,10 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@500&display=swap');
 
 $base-color: #04080f;
-$red: #EF476F;
-$green: #06D6A0;
-$yellow: #FFD166;
 $bkcolor: #f9f9f9;
+$red: #EF476F;
+// #782438 #EF476F
+$green: #06D6A0;
+// #036B50 #06D6A0
+$yellow: #FFD166;
+// #806933 #FFD166
+
 $br: 5px;
 $brWdth: 2px;
 
@@ -86,7 +90,7 @@ body {
                 padding: .5rem;
                 border-radius: $br;
                 outline: none;
-                opacity: .8;
+                opacity: 0.8;
                 transition: .2s ease-in-out;
                 font-size: 2rem;
                 color: $base-color;
@@ -169,9 +173,9 @@ body {
                 
             }
             .doubleWNE {width: 36%;}
-            .lowPrior {background-color: #06D6A0; color:#f9f9f9; border: none; opacity: 1;}
-            .midPrior{background-color: #FFD166; color:#f9f9f9; border: none; opacity: 1;}
-            .highPrior{background-color: #EF476F; color:#f9f9f9; border: none; opacity: 1;}
+            .lowPrior {background-color: $green; color: #f9f9f9; border: none; }
+            .midPrior{background-color: $yellow; color: #f9f9f9; border: none; }
+            .highPrior{background-color: $red; color: #f9f9f9; border: none; }
             .noteElement:hover {
                 opacity: 1;
             }
@@ -184,7 +188,7 @@ body {
             .tooltip .tooltiptext {
                 visibility: hidden;
                 width: 20em;
-                color: black;
+                color: $base-color;
                 text-align: center;
                 border-radius: 6px;
                 padding: 5px 0;
@@ -224,7 +228,7 @@ body {
         padding: .5rem;
         border-radius: $br;
         outline: none;
-        opacity: .8;
+        opacity: 0.8;
         transition: .2s ease-in-out;
         font-size: 2rem;
         color: $base-color;
@@ -233,7 +237,6 @@ body {
         border-top: none;
         border-left: none;
         border-right: none;
-        opacity: 0.7;
     }
 
     .newFolder {
@@ -284,8 +287,8 @@ body {
     border-radius: $br;
 }
 .addBtn:hover::before {width: 100%; border-radius: $br;}
-.addBtn:hover {color: $bkcolor; border-radius: $br;}
-.addBtn:active:before {background: $bkcolor; border-radius: $br;}
+.addBtn:hover {color: #f9f9f9; border-radius: $br;}
+.addBtn:active:before {background: #f9f9f9; border-radius: $br;}
 
 .delBtn {
     border: none;
@@ -320,8 +323,8 @@ body {
     border-radius: $br;
 }
 .delBtn:hover::before {width: 100%; border-radius: $br;}   
-.delBtn:hover {color: $bkcolor; border-radius: $br;}
-.delBtn:active:before {background: $bkcolor; border-radius: $br;}
+.delBtn:hover {color: #f9f9f9; border-radius: $br;}
+.delBtn:active:before {background: #f9f9f9; border-radius: $br;}
   
 input[type="radio"] {
     left: -999em;
@@ -342,6 +345,7 @@ input[type="radio"] {
     border: $brWdth solid $base-color;
     border-top: none;
     border-left: none;
+    transition: all 0.5s;
     opacity: 0.8;
 }
 .radio-input label {
@@ -367,7 +371,7 @@ input[type="radio"] {
     transition: .15s ease;
 } 
 .radio-input label:has(input:checked) {
-    color: $bkcolor;
+    color: #f9f9f9;
 }  
 .radio-input label:has(input:checked) ~ .selection {
     display: inline-block;
@@ -385,6 +389,10 @@ input[type="radio"] {
 .radio-input label:nth-child(3):has(input:checked) ~ .selection {
     transform: translateX(calc(var(--container_width) * 2/3));
     background-color: $red;
+    opacity: 1;
+}
+
+.radio-input:hover {
     opacity: 1;
 }
 
