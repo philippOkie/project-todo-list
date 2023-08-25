@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo</title>
+    <title>
+        ToDo
+    </title>
 </head>
 <body>
     <div class="generalContainer">
-        <div class="header">
+        <header class="header">
             <div class="currFolder" id="currFolder">Welcome!</div>
-        </div>
-        
+        </header>
+        <button class="themeBtn" id="themeBtn">Theme</button>
         <div class="sidebar">
             <div class="folderContainer" id="folderContainer">
                 <form class="controlFolder" id="controlFolder">
@@ -28,7 +30,7 @@
             </div>
         </div>
         <div class="notes" id="notes">
-            <form class="controlNotes" id="controlNotes">
+            <form class="controlNotes" id="controlNotes"> 
                 <input class='inputNote' id="titleNote" type="text" placeholder="Title" required>
                 <input class='inputNote' id="txtNote" type="text" placeholder="Description">
                 <input class='inputNote' id="dateNote" type="date">
@@ -54,41 +56,15 @@
                 <button class="addBtn">+</button>
             </form> 
             <div class="note">
-                <div class="tooltip noteElement leftBorder doubleWNE">Title
+                <p class="tooltip noteElement leftBorder doubleWNE">Title
                     <span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                </div>
-                <div class='noteElement'>
+                </p>
+                <p class='noteElement'>
                     Due-date
-                </div>
-                <div class='noteElement lowPrior'>
+                </p>
+                <p class='noteElement lowPrior'>
                     Low-Priority
-                </div>
-                <button class="delBtn">Del</button>
-            </div>
-
-            <div class="note">
-                <div class="tooltip noteElement leftBorder doubleWNE">Title
-                    <span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                </div>
-                <div class='noteElement'>
-                    Due-date
-                </div>
-                <div class='noteElement midPrior'>
-                    Mid-Priority
-                </div>
-                <button class="delBtn">Del</button>
-            </div>
-
-            <div class="note">
-                <div class="tooltip noteElement leftBorder doubleWNE">Title
-                    <span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                </div>
-                <div class='noteElement'>
-                    Due-date
-                </div>
-                <div class='noteElement highPrior'>
-                    High-Priority
-                </div>
+                </p>
                 <button class="delBtn">Del</button>
             </div>
         </div>

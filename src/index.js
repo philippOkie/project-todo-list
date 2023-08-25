@@ -1,5 +1,12 @@
 import './styles/main.scss'
 
+const folderContainer = document.getElementById('folderContainer')
+const currFolder = document.getElementById('currFolder')
+const controlFolderForm = document.getElementById('controlFolder')
+const controlNotesForm = document.getElementById("controlNotes")
+const notesContainer = document.getElementById('notes')
+const themeBtn = document.getElementById('themeBtn')
+const r = document.querySelector(':root')
 let myFolders = []
 let folderId = 0
 let noteId = 0
@@ -21,23 +28,6 @@ class Folder {
         let notes = []
     }
 }
-
-const folderContainer = document.getElementById('folderContainer')
-const currFolder = document.getElementById('currFolder')
-const submitForm = document.getElementById('controlFolder')
-const controlFolderForm = document.getElementById('controlFolder')
-const controlNotesForm = document.getElementById("controlNotes")
-const notesContainer = document.getElementById('notes')
-
-submitForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    createFolder()
-})
-
-controlNotesForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    createNote()
-})
 
 function createFolder() {
     let titleFolder = document.getElementById("titleFolder").value
@@ -61,40 +51,36 @@ function createFolder() {
     const folderToArr = new Folder(titleFolder)
     myFolders.push(folderToArr)
     console.log(myFolders)
+    currFolder.innerHTML = 'New Folder Created!'
 
     deleteFolderBtn.addEventListener('click', () => {
         if (newFolder && newFolder.parentNode) {
             newFolder.parentNode.removeChild(newFolder)
+            currFolder.innerHTML = 'Folder Deleted!'
         }
-        currFolder.innerHTML = titleFolder, 'was deleted!'
     })
-
-    // WHICH FOLDER YOU ARE
-    newFolder.addEventListener('click', () => {
+    // WHICH FOLDER YOU ARE IN
+    folderName.addEventListener('click', () => {
         currFolder.innerHTML = titleFolder
     })
+
     controlFolderForm.reset()
 }
 
 function createNote() {
-    let titleNote = document.getElementById('titleNote').value
-    let txtNote = document.getElementById('txtNote').value
-    let dateNote = document.getElementById('dateNote').value
-    const lowPrior= document.getElementById('value-1')
-    const midPrior = document.getElementById('value-2')
-    const highPrior = document.getElementById('value-3')
-
-    const newNote = document.createElement('note')
+    const newNote = document.createElement('div')
     notesContainer.appendChild(newNote)
     newNote.classList.add('note')
-
-    const toolTip = document.createElement('div')
+   
+    const titleNote = document.getElementById('titleNote').value
+    const toolTip = document.createElement('p')
     newNote.appendChild(toolTip)
     toolTip.innerHTML = titleNote
-    toolTip.classList.add('noteElement')
     toolTip.classList.add('tooltip')
     toolTip.classList.add('leftBorder')
     toolTip.classList.add('doubleWNE')
+
+    const txtNote = document.getElementById('txtNote').value
     if (txtNote !== '') {
         const toolTipSpan = document.createElement('span')
         toolTip.appendChild(toolTipSpan)
@@ -102,14 +88,16 @@ function createNote() {
         toolTipSpan.innerHTML = txtNote         
     }
 
-    const dueDate = document.createElement('div')
+    const dateNote = document.getElementById('dateNote').value
+    const dueDate = document.createElement('p')
     newNote.appendChild(dueDate)
-    dueDate.classList.add('noteElement')
     dueDateChecker(dateNote, dueDate)
 
-    const prior = document.createElement('div')
+    const lowPrior= document.getElementById('value-1')
+    const midPrior = document.getElementById('value-2')
+    const highPrior = document.getElementById('value-3')
+    const prior = document.createElement('p')
     newNote.appendChild(prior)
-    prior.classList.add('noteElement')
     let priority = ''
     priorityChecker(lowPrior, midPrior, highPrior, prior, priority)
     
@@ -124,6 +112,25 @@ function createNote() {
 
 function populateFolderStorage() {
 
+}
+
+function populateNoteStorage() {
+
+}  
+
+function changeTheme() {
+    if (getComputedStyle(r).getPropertyValue('--base-color') != "#f9f9f9") {
+        return r.style.setProperty("--base-color", "#f9f9f9"), 
+               r.style.setProperty("--bkcolor", "#04080f"), 
+               localStorage.setItem('--base-color', "#f9f9f9"), 
+               localStorage.setItem('--bkcolor', "#04080f")
+    } 
+    else if (getComputedStyle(r).getPropertyValue('--base-color') == "#f9f9f9") {
+        return r.style.setProperty("--base-color", "#04080f"), 
+               r.style.setProperty("--bkcolor", "#f9f9f9"), 
+               localStorage.setItem('--base-color', "#04080f"), 
+               localStorage.setItem('--bkcolor', "#f9f9f9")
+    }
 }
 
 function dueDateChecker(dateNote, dueDate) {
@@ -142,7 +149,7 @@ function priorityChecker(lowPrior, midPrior, highPrior, prior, priority) {
     }
     else if(midPrior.checked)
     {   
-        return priority = 'Mid-Priority' , prior.classList.add('midPrior'), prior.innerHTML = priority
+        return priority = 'Mid-Priority', prior.classList.add('midPrior'), prior.innerHTML = priority
     }
     else if(highPrior.checked)
     {   
@@ -153,6 +160,32 @@ function priorityChecker(lowPrior, midPrior, highPrior, prior, priority) {
     }
 }
 
+controlFolderForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    createFolder()
+})
+
+controlNotesForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    createNote()
+})
+
+themeBtn.addEventListener('click', () => {
+    changeTheme()
+})
+// get values for THEME from the localStorage, when the page is reloaded
+window.onload = () => {
+    r.style.setProperty('--bkcolor', localStorage.getItem('--bkcolor'))
+    r.style.setProperty('--base-color', localStorage.getItem('--base-color'))   
+}
+
+
+
+
+
+
+
+// ==============================================================
 const todayFolder = document.getElementById('todayFolder')
 todayFolder.addEventListener('click', () => {
     currFolder.innerHTML = 'Today'
