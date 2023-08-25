@@ -1,8 +1,8 @@
 export const controlNotesForm = document.getElementById("controlNotes")
 export const notesContainer = document.getElementById('notes')
+export const deleteNoteBtn = document.getElementById('delBtn')
 
 export let noteId = 0
-
 export class Note {
     constructor(noteTitle, description, dueDate, priority) {
         this.noteTitle = noteTitle
@@ -23,7 +23,6 @@ export function createNote() {
     newNote.appendChild(toolTip)
     toolTip.innerHTML = titleNote
     toolTip.classList.add('tooltip')
-    toolTip.classList.add('leftBorder')
     toolTip.classList.add('doubleWNE')
 
     const txtNote = document.getElementById('txtNote').value
@@ -52,6 +51,12 @@ export function createNote() {
     deleteNoteBtn.classList.add('delBtn')
     deleteNoteBtn.setAttribute("id", 'deleteNoteBtn')
     newNote.appendChild(deleteNoteBtn)
+
+    deleteNoteBtn .addEventListener('click', () => {
+        if (newNote && newNote.parentNode) {
+            newNote.parentNode.removeChild(newNote)
+        }
+    })
 
     controlNotesForm.reset()
 }

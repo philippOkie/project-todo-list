@@ -1,13 +1,12 @@
 @import url(./reset.scss);
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@500&display=swap');
 
-$br: 5px;
-$brWdth: 2px;
-
 .wOneNine{max-width: 190px}
-
-.leftBorder{border-left: $brWdth solid var(--base-color);}
-
+.leftBorder{border-left: var(--bdr) solid var(--base-color);}
+.doubleWNE {width: 36%;}
+.lowPrior {background-color: var(--green); color: #f9f9f9; border: none; }
+.midPrior{background-color: var(--yellow); color: #f9f9f9; border: none; }
+.highPrior{background-color: var(--red); color: #f9f9f9; border: none; }
 ::-webkit-scrollbar {display: none;}
 
 :root {
@@ -16,6 +15,8 @@ $brWdth: 2px;
     --yellow: #FFD166;
     --base-color: #04080f;
     --bkcolor: #f9f9f9;
+    --bdr: 2px;
+    --br: 5px;
 }
 
 * {
@@ -26,9 +27,9 @@ p {
     width: 19%;
     height: 100%;
     background-color: transparent;
-    border-bottom: $brWdth solid var(--base-color);
+    border-bottom: var(--bdr) solid var(--base-color);
     padding: .5rem;
-    border-radius: $br;
+    border-radius: var(--br);
     outline: none;
     opacity: .8;
     transition: .2s ease-in-out;
@@ -59,17 +60,16 @@ body {
     grid-template-columns: 25% 50% 25%;
     grid-template-rows: 10% 90%;
     gap: 1em;
-    
     .header {
         grid-row: 1 / 2;
         grid-column: 1 / 3;
        
         .currFolder {
             grid-column: 1 / 2;
-            border: $brWdth solid var(--base-color);
+            border: var(--bdr) solid var(--base-color);
             width: 100%;
             height: 100%;
-            border-radius: $br;
+            border-radius: var(--br);
             border-top: 0;
             border-left: 0;
             font-size: 5em;
@@ -86,11 +86,11 @@ body {
         grid-row: 1 / 2;
         grid-column: 3 / 4;
         width: 100%;
-        font-size: 4em;
+        font-size: 3.5em;
         margin-right: 1em;
         background-color: transparent;
-        border: $brWdth solid var(--base-color);
-        border-radius: $br;
+        border: var(--bdr) solid var(--base-color);
+        border-radius: var(--br);
         opacity: 0.8;
         padding: 10px;
         display: flex;
@@ -103,23 +103,27 @@ body {
 
     .themeBtn:hover {
         opacity: 1;
+        font-size: 3.6em;
     }
 
-    .themeBtn:active {color: var(--bkcolor); border: var(--bkcolor);}
+    .themeBtn:active {
+        color: var(--bkcolor); 
+        border: var(--bkcolor);
+    }
     
     .sidebar {
         display: flex;
         flex-direction: column;
 
-        border: $brWdth solid var(--base-color);
+        border: var(--bdr) solid var(--base-color);
         grid-column: 1 / 1;
-        border-radius: $br;
+        border-radius: var(--br);
         padding-top: 10px;
         border-bottom: 0;
         border-left: 0;
 
         .controlFolder {
-            border-radius: $br;
+            border-radius: var(--br);
             margin-bottom: 2em;
             width: 90%;
 
@@ -132,9 +136,9 @@ body {
                 width: 80%;
                 height: 100%;
                 background-color: transparent;
-                border: $brWdth solid var(--base-color);
+                border: var(--bdr) solid var(--base-color);
                 padding: .5rem;
-                border-radius: $br;
+                border-radius: var(--br);
                 outline: none;
                 opacity: 0.8;
                 transition: .2s ease-in-out;
@@ -144,63 +148,70 @@ body {
                 border-left: none;
             }
 
-            .titleFolder:focus {opacity: 1;}
+            .titleFolder:focus {
+                opacity: 1;
+            }
 
-            .titleFolder:hover {opacity: 1;}
+            .titleFolder:hover {
+                opacity: 1;
+            }
         }
     }
 
     .notes {
-        border: $brWdth solid var(--base-color);
-        border-radius: $br;
+        border: var(--bdr) solid var(--base-color);
+        border-radius: var(--br);
         border-bottom: 0;
         border-right: 0;
-        display: flex;
-        flex-direction: column;
         padding-top: 20px;
         overflow: scroll;
-        grid-column: 2 / 4;
+        padding-left: 1em;
 
+        display: flex;
+        flex-direction: column;
+
+        grid-column: 2 / 4;
         .controlNotes {
-            border-radius: $br;
+            border-radius: var(--br);
             margin-bottom: 1em;
-            width: 98%;
+            width: 100%;
             
             display: flex;
             justify-self: center;
             align-self: center;
             justify-content: space-between;
-
             .inputNote {
                 width: calc(18% + 1% / 2);
                 height: 100%;
                 background-color: transparent;
-                border: $brWdth solid var(--base-color);
-                padding: .5rem;
-                border-radius: $br;
+                border: var(--bdr) solid var(--base-color);
+                border-radius: var(--br);
                 outline: none;
                 opacity: .8;
                 transition: .2s ease-in-out;
                 font-size: 2rem;
                 color: var(--base-color);
-                
                 border-top: none;
                 border-left: none;
             }
 
-            .inputNote:focus {opacity: 1;}
+            .inputNote:focus {
+                opacity: 1;
+            }
 
-            .inputNote:hover {opacity: 1;}
+            .inputNote:hover {
+                opacity: 1;
+            }
         }
 
         .note {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
-            padding-top: 20px;
+            justify-content: space-between;
 
+            padding-top: 20px;
             .noteContent {
-                border-radius: $br;
+                border-radius: var(--br);
                 margin-bottom: 1em;
                 width: 90%;
     
@@ -210,14 +221,6 @@ body {
                 justify-content: space-between
             }
             
-            .doubleWNE {width: 36%;}
-
-            .lowPrior {background-color: var(--green); color: #f9f9f9; border: none; }
-
-            .midPrior{background-color: var(--yellow); color: #f9f9f9; border: none; }
-
-            .highPrior{background-color: var(--red); color: #f9f9f9; border: none; }
-
             .tooltip {
                 position: relative;
                 display: inline-block;
@@ -245,7 +248,7 @@ body {
                 margin-left: -60px;
                 margin-bottom: 20em;
                 background-color: var(--bkcolor);
-                border-radius: $br;
+                border-radius: var(--br);
             }
         }
     }
@@ -262,9 +265,9 @@ body {
 
     .folderName {
         background-color: transparent;
-        border: $brWdth solid var(--base-color);
+        border: var(--bdr) solid var(--base-color);
         padding: .5rem;
-        border-radius: $br;
+        border-radius: var(--br);
         outline: none;
         opacity: 0.8;
         transition: .2s ease-in-out;
@@ -278,7 +281,7 @@ body {
     }
 
     .newFolder {
-        border-radius: $br;
+        border-radius: var(--br);
         width: 90%;
         display: flex;
         justify-self: center;
@@ -287,15 +290,20 @@ body {
         margin-bottom: 1.5em; 
     }
 
-    .folderName:hover {opacity: 1;}
+    .folderName:hover {
+        opacity: 1;
+    }
 
-    .folderName:active {color: var(--bkcolor); border: var(--bkcolor);}
+    .folderName:active {
+        color: var(--bkcolor); 
+        border: var(--bkcolor);
+    }
 }
 
 .addBtn {
     border: none;
     color: var(--green);
-    border-radius: $br;
+    border-radius: var(--br);
     font-size: 2.3em;
     width: 20%;
     height: 2em;
@@ -312,7 +320,6 @@ body {
     position: relative;
     transition: all 0.5s;
     z-index: 1;
-    
 }
 
 .addBtn::before {
@@ -325,19 +332,17 @@ body {
     background-color: var(--green);
     z-index: -1;
     transition: all 0.5s;
-    border-radius: $br;
+    border-radius: var(--br);
 }
 
-.addBtn:hover::before {width: 100%; border-radius: $br;}
-
-.addBtn:hover {color: #f9f9f9; border-radius: $br;}
-
-.addBtn:active:before {background: #f9f9f9; border-radius: $br;}
+.addBtn:hover::before {width: 100%; border-radius: var(--br);}
+.addBtn:hover {color: #f9f9f9; border-radius: var(--br);}
+.addBtn:active:before {background: #f9f9f9; border-radius: var(--br);}
 
 .delBtn {
     border: none;
     color: var(--red);
-    border-radius: $br;
+    border-radius: var(--br);
     font-size: 2.3em;
     width: 20%;
     transition: all 0.4s;
@@ -365,14 +370,12 @@ body {
     background-color: var(--red);
     z-index: -1;
     transition: all 0.5s;
-    border-radius: $br;
+    border-radius: var(--br);
 }
 
-.delBtn:hover::before {width: 100%; border-radius: $br;} 
-
-.delBtn:hover {color: #f9f9f9; border-radius: $br;}
-
-.delBtn:active:before {background: #f9f9f9; border-radius: $br;}
+.delBtn:hover::before {width: 100%; border-radius: var(--br);} 
+.delBtn:hover {color: #f9f9f9; border-radius: var(--br);}
+.delBtn:active:before {background: #f9f9f9; border-radius: var(--br);}
   
 input[type="radio"] {
     left: -999em;
@@ -387,12 +390,12 @@ input[type="radio"] {
     position: relative;
     display: flex;
     align-items: center;
-    border-radius: $br;
+    border-radius: var(--br);
     background-color: var(--bkcolor);
     color: var(--base-color);
     width: var(--container_width);
     overflow: hidden;
-    border: $brWdth solid var(--base-color);
+    border: var(--bdr) solid var(--base-color);
     border-top: none;
     border-left: none;
     transition: all 0.5s;
@@ -411,6 +414,7 @@ input[type="radio"] {
     letter-spacing: -1px;
     font-size: 1.1em;
 }
+
 .selection {
     display: none;
     position: absolute;

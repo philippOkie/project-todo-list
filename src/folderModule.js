@@ -4,7 +4,6 @@ export const controlFolderForm = document.getElementById('controlFolder')
 
 export let myFolders = []
 export let folderId = 0
-
 export class Folder {
     constructor(folderTitle) {
         this.folderName = folderTitle
@@ -36,14 +35,14 @@ export function createFolder() {
     myFolders.push(folderToArr)
     console.log(myFolders)
     currFolder.innerHTML = 'New Folder Created!'
-
+    // delete folder
     deleteFolderBtn.addEventListener('click', () => {
         if (newFolder && newFolder.parentNode) {
             newFolder.parentNode.removeChild(newFolder)
             currFolder.innerHTML = 'Folder Deleted!'
         }
     })
-    // Change WHICH FOLDER YOU ARE IN
+    // change WHICH FOLDER YOU ARE IN
     folderName.addEventListener('click', () => {
         currFolder.innerHTML = titleFolder
 
