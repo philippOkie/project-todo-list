@@ -36,6 +36,10 @@ export function createFolder() {
     newFolder.appendChild(deleteFolderBtn)
 
     const folderToArr = new Folder(titleFolder)
+    // Convert the object to a JSON string
+    const folderObjString = JSON.stringify(folderToArr);
+    // Store the JSON string in local storage
+    localStorage.setItem(folderId - 1, folderObjString);
     myFolders.push(folderToArr)
     currFolder.innerHTML = 'New Folder ' + titleFolder + ' Created!'
     console.log(myFolders)
@@ -46,6 +50,7 @@ export function createFolder() {
             newFolder.parentNode.removeChild(newFolder)
             currFolder.innerHTML = 'Folder ' + titleFolder + ' deleted!'
             removeFolderFromLibrary(folderToArr.folderId)
+            localStorage.removeItem(folderToArr.folderId)
             // console.log(myFolders)
         }
     })
@@ -64,7 +69,7 @@ export function createFolder() {
             folderName.innerHTML = oldVal
         } 
         else if (newVal) {
-            folderName.innerHTML = newVal
+            folderName.innerHTML = titleFolder = newVal
             folderToArr.folderName = newVal
         } 
         else {

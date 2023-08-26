@@ -1,7 +1,7 @@
 import './styles/main.scss'
 import {changeTheme, r, themeBtn} from './uiModule.js'
 import {Note, controlNotesForm, notesContainer, noteId, createNote} from './noteModule.js'
-import {Folder, folderId, folderContainer, currFolder, controlFolderForm, createFolder, myFolders} from './folderModule.js'
+import {Folder, folderId, folderContainer, currFolder, controlFolderForm, createFolder, myFolders, folderName} from './folderModule.js'
 
 controlFolderForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -10,7 +10,7 @@ controlFolderForm.addEventListener('submit', (e) => {
 
 controlNotesForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    createNote()
+    createNote(titleFolder)
 })
 
 themeBtn.addEventListener('click', () => {
@@ -30,9 +30,5 @@ function populateNoteStorage() {
 
 }  
 
-const todayFolder = document.getElementById('todayFolder')
-todayFolder.addEventListener('click', () => {
-    currFolder.innerHTML = 'Default Folder'
-})
 
 
