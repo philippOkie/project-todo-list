@@ -25,9 +25,9 @@ export function createNote() {
     toolTip.classList.add('tooltip')
     toolTip.classList.add('doubleWNE')
 
+    const toolTipSpan = document.createElement('span')
     const txtNote = document.getElementById('txtNote').value
     if (txtNote !== '') {
-        const toolTipSpan = document.createElement('span')
         toolTip.appendChild(toolTipSpan)
         toolTipSpan.classList.add('tooltiptext')
         toolTipSpan.innerHTML = txtNote         
@@ -57,7 +57,23 @@ export function createNote() {
             newNote.parentNode.removeChild(newNote)
         }
     })
+    // changing notes' content
+    prior.addEventListener("dblclick", (e) => {
+        alert('this is a priority section')
+    })
 
+    dueDate.addEventListener("dblclick", (e) => {
+        alert('this is a due date section')
+    })
+
+    toolTipSpan.addEventListener("dblclick", (e) => {
+        alert('this is a description section')
+    })
+
+    toolTip.addEventListener("dblclick", (e) => {
+        alert('this is a title section')
+    })
+    
     controlNotesForm.reset()
 }
 

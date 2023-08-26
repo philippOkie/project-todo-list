@@ -3,14 +3,6 @@ import {changeTheme, r, themeBtn} from './uiModule.js'
 import {Note, controlNotesForm, notesContainer, noteId, createNote, dueDateChecker, priorityChecker} from './noteModule.js'
 import {Folder, folderId, folderContainer, currFolder, controlFolderForm, createFolder, myFolders} from './folderModule.js'
 
-function populateFolderStorage() {
-
-}
-
-function populateNoteStorage() {
-
-}  
-
 controlFolderForm.addEventListener('submit', (e) => {
     e.preventDefault()
     createFolder()
@@ -30,6 +22,13 @@ window.onload = () => {
     r.style.setProperty('--base-color', localStorage.getItem('--base-color'))   
 }
 
+function populateFolderStorage() {
+
+}
+
+function populateNoteStorage() {
+
+}  
 
 
 

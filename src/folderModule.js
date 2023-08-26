@@ -47,6 +47,11 @@ export function createFolder() {
         currFolder.innerHTML = titleFolder
 
     })
-    
+    // changing folders' content
+    folderName.addEventListener("dblclick", (e) => {
+        alert('this is a folder name section')
+        prompt("Folder Name:")
+    })
     controlFolderForm.reset()
 }
+
