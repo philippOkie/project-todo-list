@@ -1,13 +1,14 @@
 @import url(./reset.scss);
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@500&display=swap');
 
-.wOneNine{max-width: 190px}
+.wOneNine{max-width: 190px;}
 .leftBorder{border-left: var(--bdr) solid var(--base-color);}
 .doubleWNE {width: 36%;}
 .lowPrior {background-color: var(--green); color: #f9f9f9; border: none; }
 .midPrior{background-color: var(--yellow); color: #f9f9f9; border: none; }
 .highPrior{background-color: var(--red); color: #f9f9f9; border: none; }
 ::-webkit-scrollbar {display: none;}
+::-webkit-calendar-picker-indicator {display:none}
 
 :root {
     --red: #EF476F; 
@@ -17,10 +18,6 @@
     --bkcolor: #f9f9f9;
     --bdr: 2px;
     --br: 5px;
-}
-
-* {
-    scroll-behavior: smooth;
 }
 
 p {
@@ -165,6 +162,7 @@ body {
         border-right: 0;
         padding-top: 20px;
         overflow: scroll;
+        scroll-behavior: smooth !important;
         padding-left: 1em;
 
         display: flex;
@@ -259,6 +257,7 @@ body {
     border-bottom: 0;
     border-left: 0;
     overflow-y: scroll;
+    scroll-behavior: smooth !important;
     display: flex;
     flex-direction: column;
     align-items: center;

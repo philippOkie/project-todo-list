@@ -52,20 +52,14 @@ export function createNote() {
     deleteNoteBtn.setAttribute("id", 'deleteNoteBtn')
     newNote.appendChild(deleteNoteBtn)
 
-    deleteNoteBtn .addEventListener('click', () => {
+    // deleting notes
+    deleteNoteBtn.addEventListener('click', () => {
         if (newNote && newNote.parentNode) {
             newNote.parentNode.removeChild(newNote)
         }
     })
+
     // changing notes' content
-    prior.addEventListener("dblclick", (e) => {
-        alert('this is a priority section')
-    })
-
-    dueDate.addEventListener("dblclick", (e) => {
-        alert('this is a due date section')
-    })
-
     toolTipSpan.addEventListener("dblclick", (e) => {
         alert('this is a description section')
     })
@@ -77,7 +71,7 @@ export function createNote() {
     controlNotesForm.reset()
 }
 
-export function dueDateChecker(dateNote, dueDate) {
+function dueDateChecker(dateNote, dueDate) {
     if (dateNote !== '') {
         return dueDate.innerHTML = dateNote
     }
@@ -86,7 +80,7 @@ export function dueDateChecker(dateNote, dueDate) {
     }
 }
 
-export function priorityChecker(lowPrior, midPrior, highPrior, prior, priority) {
+function priorityChecker(lowPrior, midPrior, highPrior, prior, priority) {
     if(lowPrior.checked)
     {   
         return priority = 'Low-Priority', prior.classList.add('lowPrior'), prior.innerHTML = priority

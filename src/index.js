@@ -1,6 +1,6 @@
 import './styles/main.scss'
 import {changeTheme, r, themeBtn} from './uiModule.js'
-import {Note, controlNotesForm, notesContainer, noteId, createNote, dueDateChecker, priorityChecker} from './noteModule.js'
+import {Note, controlNotesForm, notesContainer, noteId, createNote} from './noteModule.js'
 import {Folder, folderId, folderContainer, currFolder, controlFolderForm, createFolder, myFolders} from './folderModule.js'
 
 controlFolderForm.addEventListener('submit', (e) => {
@@ -30,17 +30,9 @@ function populateNoteStorage() {
 
 }  
 
-
-
-
-// test==============================================================
 const todayFolder = document.getElementById('todayFolder')
 todayFolder.addEventListener('click', () => {
-    currFolder.innerHTML = 'Today'
+    currFolder.innerHTML = 'Default Folder'
 })
 
-const upcomingFolder = document.getElementById('upcomingFolder')
-upcomingFolder.addEventListener('click', () => {
-    currFolder.innerHTML = 'Upcoming'
-})
 

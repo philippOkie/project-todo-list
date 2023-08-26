@@ -12,6 +12,10 @@ export class Folder {
     }
 }
 
+function removeFolderFromLibrary(folderId) {
+    myFolders = myFolders.filter((folderToArr) => folderToArr.folderId !== folderId)
+}
+  
 export function createFolder() {
     let titleFolder = document.getElementById("titleFolder").value
 
@@ -19,7 +23,7 @@ export function createFolder() {
     newFolder.classList.add('newFolder')
     folderContainer.appendChild(newFolder)
 
-    const folderName = document.createElement("button")
+    let folderName = document.createElement("button")
     folderName.innerHTML = titleFolder
     folderName.classList.add('folderName')
     folderName.setAttribute("id", titleFolder)
@@ -33,25 +37,41 @@ export function createFolder() {
 
     const folderToArr = new Folder(titleFolder)
     myFolders.push(folderToArr)
+    currFolder.innerHTML = 'New Folder ' + titleFolder + ' Created!'
     console.log(myFolders)
-    currFolder.innerHTML = 'New Folder Created!'
+
     // delete folder
     deleteFolderBtn.addEventListener('click', () => {
         if (newFolder && newFolder.parentNode) {
             newFolder.parentNode.removeChild(newFolder)
-            currFolder.innerHTML = 'Folder Deleted!'
+            currFolder.innerHTML = 'Folder ' + titleFolder + ' deleted!'
+            removeFolderFromLibrary(folderToArr.folderId)
+            // console.log(myFolders)
         }
     })
+
     // change WHICH FOLDER YOU ARE IN
     folderName.addEventListener('click', () => {
         currFolder.innerHTML = titleFolder
+        // code
+    })
 
-    })
-    // changing folders' content
+    // changing folder's name
     folderName.addEventListener("dblclick", (e) => {
-        alert('this is a folder name section')
-        prompt("Folder Name:")
+        let oldVal = titleFolder
+        let newVal = prompt("Please enter a new folder name:")  
+        if (newVal === "") {
+            folderName.innerHTML = oldVal
+        } 
+        else if (newVal) {
+            folderName.innerHTML = newVal
+            titleFolder = newVal
+        } 
+        else {
+            folderName.innerHTML = oldVal
+        }
     })
+   
     controlFolderForm.reset()
 }
 
