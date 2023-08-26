@@ -65,11 +65,12 @@ export function createFolder() {
         } 
         else if (newVal) {
             folderName.innerHTML = newVal
-            titleFolder = newVal
+            folderToArr.folderName = newVal
         } 
         else {
             folderName.innerHTML = oldVal
         }
+        console.log(myFolders)
     })
    
     controlFolderForm.reset()
