@@ -12,6 +12,7 @@ export class Note {
         this.noteId = noteId++
     }
 }
+
 let arrayOfNotes = []
 export function createNote() {    
     const newNote = document.createElement('div')

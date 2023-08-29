@@ -1,0 +1,82 @@
+.addBtn {
+    border: none;
+    color: var(--green);
+    border-radius: var(--br);
+    font-size: 2.3em;
+    width: 20%;
+    height: 2em;
+    transition: all 0.4s;
+    background: var(--bkcolor);
+    margin-left: 0.9rem;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 1;
+}
+
+.addBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--green);
+    z-index: -1;
+    transition: all 0.5s;
+    border-radius: var(--br);
+}
+
+.addBtn:hover::before {width: 100%; border-radius: var(--br);}
+
+.addBtn:hover {color: #f9f9f9; border-radius: var(--br);}
+
+.addBtn:active:before {background: #f9f9f9; border-radius: var(--br);}
+
+
+.delBtn {
+    border: none;
+    color: var(--red);
+    border-radius: var(--br);
+    font-size: 2.3em;
+    width: 20%;
+    transition: all 0.4s;
+    background: var(--bkcolor);
+    margin-left: 0.9rem;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 1;
+}
+
+.delBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--red);
+    z-index: -1;
+    transition: all 0.5s;
+    border-radius: var(--br);
+}
+
+.delBtn:hover::before {width: 100%; border-radius: var(--br);} 
+
+.delBtn:hover {color: #f9f9f9; border-radius: var(--br);}
+
+.delBtn:active:before {background: #f9f9f9; border-radius: var(--br);}
+  
