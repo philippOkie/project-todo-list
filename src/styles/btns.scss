@@ -1,3 +1,33 @@
+.themeBtn {
+    color: var(--base-color);
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    width: 100%;
+    font-size: 3.5em;
+    margin-right: 1em;
+    background-color: transparent;
+    border: var(--bdr) solid var(--base-color);
+    border-radius: var(--br);
+    opacity: 0.8;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: none;
+    border-right: none;
+    transition: .5s all;
+}
+
+.themeBtn:hover {
+    opacity: 1;
+    font-size: 3.6em;
+}
+
+.themeBtn:active {
+    color: var(--bkcolor); 
+    border: var(--bkcolor);
+} 
+
 .addBtn {
     border: none;
     color: var(--green);

@@ -1,7 +1,7 @@
 import './styles/main.scss'
 import {changeTheme, r, themeBtn} from './uiModule.js'
-import {Note, controlNotesForm, notesContainer, noteId, createNote} from './noteModule.js'
-import {Folder, folderId, folderContainer, currFolder, controlFolderForm, createFolder, myFolders, folderName, showFolders} from './folderModule.js'
+import {Note, controlNotesForm, notesContainer, noteId, active, createNote} from './noteModule.js'
+import {Folder, folderId, folderContainer, currFolder, controlFolderForm, createFolder, chosenFolder, myFolders, folderName, showFolders} from './folderModule.js'
 
 controlFolderForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -10,6 +10,12 @@ controlFolderForm.addEventListener('submit', (e) => {
 
 controlNotesForm.addEventListener('submit', (e) => {
     e.preventDefault()
+    if (chosenFolder === undefined) {
+        alert("Choose a folder you want to save in!")
+        return
+    }
+    myFolders.filter((folderToArr) => folderToArr.folderId !== chosenFolder)
+    chosenFolder = folderToArr.folderId
     createNote()
 })
 
@@ -23,13 +29,6 @@ window.onload = () => {
     showFolders()
 }
 
-function populateFolderStorage() {
-
-}
-
-function populateNoteStorage() {
-
-}  
 
 
 

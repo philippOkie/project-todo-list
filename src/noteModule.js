@@ -1,6 +1,7 @@
 export const controlNotesForm = document.getElementById("controlNotes")
 export const notesContainer = document.getElementById('notes')
 export const deleteNoteBtn = document.getElementById('delBtn')
+export const active = document.getElementsByClassName('active')
 
 export let noteId = 1
 export class Note {
@@ -66,7 +67,7 @@ export function createNote() {
     // changing notes' content
     toolTipSpan.addEventListener("dblclick", (e) => {
         let oldVal = txtNote
-        let newVal = prompt("Enter new discription:")  
+        let newVal = prompt("Enter new description:")  
         if (newVal === "") {
             toolTipSpan.innerHTML = oldVal
         } 
