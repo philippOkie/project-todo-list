@@ -10,7 +10,7 @@ export class Note {
         this.txtNote = txtNote
         this.dueDate = dueDate
         this.priority = priority
-        this.noteId = noteId++
+        this.noteId = noteId
     }
 }
 
@@ -54,10 +54,18 @@ export function createNote() {
     deleteNoteBtn.setAttribute("id", 'deleteNoteBtn')
     newNote.appendChild(deleteNoteBtn)
 
-    const newNoteArr = new Note(titleNote, txtNote, dateNote, priority)
-    arrayOfNotes.push(newNoteArr)
-    console.log(arrayOfNotes)
+    if (localStorage.getItem("noteId") === null) {
+        localStorage.setItem("noteId", noteId)
+    }
+    else {
+        noteId = localStorage.getItem("noteId")
+    }
+    noteId++
+    localStorage.setItem("noteId", noteId)
+    newNote.setAttribute("id", noteId)
 
+    const newNoteArr = new Note(titleNote, txtNote, dateNote, priority)
+    
     // deleting notes
     deleteNoteBtn.addEventListener('click', () => {
         if (newNote && newNote.parentNode) {
@@ -79,8 +87,8 @@ export function createNote() {
             toolTipSpan.innerHTML = oldVal
         }
     })
-    
     controlNotesForm.reset()
+    return newNoteArr
 }
 
 function dueDateChecker(dateNote, dueDate) {

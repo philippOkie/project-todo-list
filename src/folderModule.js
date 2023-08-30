@@ -9,7 +9,7 @@ export class Folder {
     constructor(folderTitle, folderId) {
         this.folderName = folderTitle
         this.folderId = folderId
-        let notes = []
+        this.notes = []
     }
 }
 
@@ -72,7 +72,9 @@ export function createFolder() {
 
         myFolders = myFolders.filter((folderToArr) => folderToArr.folderId !== folderId)
         chosenFolder = folderToArr.folderId
-        console.log(chosenFolder)
+        console.log(chosenFolder, folderToArr)
+        location.reload()
+        return chosenFolder
     })
     // changing folder's name
     folderName.addEventListener("dblclick", (e) => {
@@ -159,6 +161,11 @@ export function showFolders() {
             const folders = document.querySelectorAll('.newFolder')
             folders.forEach(folder => folder.classList.remove('active'))
             newFolder.addEventListener('click', () => newFolder.classList.add("active"))
+
+            myFolders = myFolders.filter((myFoldersLocalStorage) => myFoldersLocalStorage.folderId !== folderId)
+            chosenFolder = myFoldersLocalStorage[i].folderId
+            console.log(chosenFolder, myFoldersLocalStorage[i])
+            return chosenFolder
         })
 
         // Event listener to change folder's name

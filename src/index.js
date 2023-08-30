@@ -14,9 +14,9 @@ controlNotesForm.addEventListener('submit', (e) => {
         alert("Choose a folder you want to save in!")
         return
     }
-    myFolders.filter((folderToArr) => folderToArr.folderId !== chosenFolder)
-    chosenFolder = folderToArr.folderId
-    createNote()
+    const requiredFolder = myFolders.find((folder) => folder.folderId == chosenFolder)
+    const noteToWrite = createNote()
+    requiredFolder.notes.push(noteToWrite)
 })
 
 themeBtn.addEventListener('click', () => {
