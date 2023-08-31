@@ -79,33 +79,6 @@ export function createFolder() {
         location.reload()
         return chosenFolder
     })
-    // changing folder's name
-    // folderName.addEventListener("dblclick", (e) => {
-    //     let oldVal = titleFolder
-    //     let newVal = prompt("Enter name:")  
-    //     if (newVal === "") {
-    //         folderName.innerHTML = oldVal
-    //     } 
-    //     else if (newVal) {
-    //         folderName.innerHTML = titleFolder = newVal
-    //         folderToArr.folderName = newVal
-    //         // Retrieve the current array from local storage
-    //         let myFoldersString = localStorage.getItem("MyFolders")
-    //         let myFolders = JSON.parse(myFoldersString) || []
-    //         // Find the folder in the array by folderId and update its name
-    //         const folderIndex = myFolders.findIndex(folder => folder.folderId === folderToArr.folderId)
-    //         if (folderIndex !== -1) {
-    //             myFolders[folderIndex].folderName = newVal
-    //             // Store the updated array back in local storage
-    //             myFoldersString = JSON.stringify(myFolders)
-    //             localStorage.setItem("MyFolders", myFoldersString)
-    //         }
-    //     }    
-    //     else {
-    //         folderName.innerHTML = oldVal
-    //     }
-    //     console.log(myFolders)
-    // })
     controlFolderForm.reset()
 }
 
@@ -275,23 +248,6 @@ export function showFolders() {
                     function removeNoteFromLibrary(noteId) {
                         myFoldersLocalStorage[i].notes = myFoldersLocalStorage[i].notes.filter((note) => note.noteId !== noteId)
                     }
-                    // Event listener to change folder's name
-                    // folderName.addEventListener("dblclick", () => {
-                    //     let oldVal = titleFolder
-                    //     let newVal = prompt("Please enter a new folder name:")  
-                    //     if (newVal === "") {
-                    //         folderName.innerHTML = oldVal
-                    //     }else if (newVal) {
-                    //         folderName.innerHTML = titleFolder = newVal
-                    //         myFoldersLocalStorage[i].folderName = newVal
-
-                    //         myFoldersString = JSON.stringify(myFoldersLocalStorage)
-                    //         localStorage.setItem("MyFolders", myFoldersString)
-                    //     }else {
-                    //         folderName.innerHTML = oldVal
-                    //     }
-                    //     console.log(myFoldersLocalStorage)
-                    // })
             } 
         }
         return chosenFolder
