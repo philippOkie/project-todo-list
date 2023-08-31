@@ -1,6 +1,9 @@
+import {priorityChecker, dueDateChecker, createNote} from './noteModule.js'
+
 export const folderContainer = document.getElementById('folderContainer')
 export const currFolder = document.getElementById('currFolder')
 export const controlFolderForm = document.getElementById('controlFolder')
+const notesContainer = document.getElementById('notes')
 
 export let chosenFolder = undefined
 export let myFolders = []
@@ -16,7 +19,7 @@ export class Folder {
 function removeFolderFromLibrary(folderId) {
     myFolders = myFolders.filter((folderToArr) => folderToArr.folderId !== folderId)
 }
-  
+ 
 export function createFolder() {
     let titleFolder = document.getElementById("titleFolder").value
 
@@ -30,7 +33,7 @@ export function createFolder() {
     newFolder.appendChild(folderName)
         
     const deleteFolderBtn = document.createElement("button")
-    deleteFolderBtn.innerHTML = "Del"
+    deleteFolderBtn.innerHTML = "-"
     deleteFolderBtn.classList.add('delBtn')
     deleteFolderBtn.setAttribute("id", 'deleteFolderBtn')
     newFolder.appendChild(deleteFolderBtn)
@@ -77,35 +80,32 @@ export function createFolder() {
         return chosenFolder
     })
     // changing folder's name
-    folderName.addEventListener("dblclick", (e) => {
-        let oldVal = titleFolder
-        let newVal = prompt("Enter name:")  
-        if (newVal === "") {
-            folderName.innerHTML = oldVal
-        } 
-        else if (newVal) {
-            folderName.innerHTML = titleFolder = newVal
-            folderToArr.folderName = newVal
-    
-            // Retrieve the current array from local storage
-            let myFoldersString = localStorage.getItem("MyFolders")
-            let myFolders = JSON.parse(myFoldersString) || []
-    
-            // Find the folder in the array by folderId and update its name
-            const folderIndex = myFolders.findIndex(folder => folder.folderId === folderToArr.folderId)
-            if (folderIndex !== -1) {
-                myFolders[folderIndex].folderName = newVal
-    
-                // Store the updated array back in local storage
-                myFoldersString = JSON.stringify(myFolders)
-                localStorage.setItem("MyFolders", myFoldersString)
-            }
-        }    
-        else {
-            folderName.innerHTML = oldVal
-        }
-        console.log(myFolders)
-    })
+    // folderName.addEventListener("dblclick", (e) => {
+    //     let oldVal = titleFolder
+    //     let newVal = prompt("Enter name:")  
+    //     if (newVal === "") {
+    //         folderName.innerHTML = oldVal
+    //     } 
+    //     else if (newVal) {
+    //         folderName.innerHTML = titleFolder = newVal
+    //         folderToArr.folderName = newVal
+    //         // Retrieve the current array from local storage
+    //         let myFoldersString = localStorage.getItem("MyFolders")
+    //         let myFolders = JSON.parse(myFoldersString) || []
+    //         // Find the folder in the array by folderId and update its name
+    //         const folderIndex = myFolders.findIndex(folder => folder.folderId === folderToArr.folderId)
+    //         if (folderIndex !== -1) {
+    //             myFolders[folderIndex].folderName = newVal
+    //             // Store the updated array back in local storage
+    //             myFoldersString = JSON.stringify(myFolders)
+    //             localStorage.setItem("MyFolders", myFoldersString)
+    //         }
+    //     }    
+    //     else {
+    //         folderName.innerHTML = oldVal
+    //     }
+    //     console.log(myFolders)
+    // })
     controlFolderForm.reset()
 }
 
@@ -132,7 +132,7 @@ export function showFolders() {
         newFolder.appendChild(folderName)
         
         const deleteFolderBtn = document.createElement("button")
-        deleteFolderBtn.innerHTML = "Del"
+        deleteFolderBtn.innerHTML = "-"
         deleteFolderBtn.classList.add('delBtn')
         deleteFolderBtn.setAttribute("id", 'deleteFolderBtn')
         newFolder.appendChild(deleteFolderBtn)
@@ -140,7 +140,6 @@ export function showFolders() {
         let myFoldersString = localStorage.getItem("MyFolders")
         myFolders = JSON.parse(myFoldersString)
         folderName.setAttribute("id", myFoldersLocalStorage[i].folderId)
-        
         // Event listener to delete folder
         deleteFolderBtn.addEventListener('click', () => {
             if (newFolder && newFolder.parentNode) {
@@ -153,7 +152,6 @@ export function showFolders() {
                 // console.log(myFolders)
             }
         })
-
         // Event listener to change WHICH FOLDER YOU ARE IN
         folderName.addEventListener('click', () => {
             currFolder.innerHTML = titleFolder
@@ -165,27 +163,137 @@ export function showFolders() {
             myFolders = myFolders.filter((myFoldersLocalStorage) => myFoldersLocalStorage.folderId !== folderId)
             chosenFolder = myFoldersLocalStorage[i].folderId
             console.log(chosenFolder, myFoldersLocalStorage[i])
-            return chosenFolder
-        })
+            while (notesContainer.children.length > 1) {
+                notesContainer.lastChild.remove()
+            }          
+            for (let note of myFoldersLocalStorage[i].notes) {
+                let titleNote = note.titleNote
+                let txtNote = note.txtNote
+                let dateNote = note.dueDate
+                let priority = note.priority
+                let noteId = note.noteId
 
-        // Event listener to change folder's name
-        folderName.addEventListener("dblclick", () => {
-            let oldVal = titleFolder
-            let newVal = prompt("Please enter a new folder name:")  
-            if (newVal === "") {
-                folderName.innerHTML = oldVal
-            } 
-            else if (newVal) {
-                folderName.innerHTML = titleFolder = newVal
-                myFoldersLocalStorage[i].folderName = newVal
+                function removeNoteFromLibrary(noteId) {
+                    myFoldersLocalStorage[i].notes = myFoldersLocalStorage[i].notes.filter((note) => note.noteId !== noteId)
+                }
 
-                myFoldersString = JSON.stringify(myFoldersLocalStorage)
-                localStorage.setItem("MyFolders", myFoldersString)
+                const toolTipSpan = document.createElement('span')
+                if (titleNote !== "") {
+                    const newNote = document.createElement('div')
+                    notesContainer.appendChild(newNote)
+                    newNote.classList.add('note')
+                    
+                    const toolTip = document.createElement('p')
+                    newNote.appendChild(toolTip)
+                    toolTip.innerHTML = titleNote
+                    toolTip.classList.add('tooltip')
+                    toolTip.classList.add('doubleWNE')
+                    
+                    if (txtNote !== '') {
+                        toolTip.appendChild(toolTipSpan)
+                        toolTipSpan.classList.add('tooltiptext')
+                        toolTipSpan.innerHTML = txtNote         
+                    }
+                    
+                    const dueDate = document.createElement('p')
+                    newNote.appendChild(dueDate)
+                    dueDateChecker(dateNote, dueDate)
+
+                    const lowPrior= document.getElementById('value-1')
+                    const midPrior = document.getElementById('value-2')
+                    const highPrior = document.getElementById('value-3')
+                    const prior = document.createElement('p')
+                    newNote.appendChild(prior)
+                    
+                    if(priority == 1)
+                    {   
+                        prior.classList.add('lowPrior')
+                        prior.innerHTML = "Low Priority"
+                    }
+                    else if(priority == 2)
+                    {   
+                        prior.classList.add('midPrior')
+                        prior.innerHTML = "Mid Priority"
+                    }
+                    else if(priority == 3)
+                    {   
+                        prior.classList.add('highPrior')
+                        prior.innerHTML = "High Priority"
+                    }
+                    else {   
+                        prior.classList.add('lowPrior')
+                        prior.innerHTML = "Low Priority"
+                    }
+                                
+                    const deleteNoteBtn = document.createElement("button")
+                    deleteNoteBtn.innerHTML = "-"
+                    deleteNoteBtn.classList.add('delBtn')
+                    deleteNoteBtn.setAttribute("id", 'deleteNoteBtn')
+                    newNote.appendChild(deleteNoteBtn)
+    
+                    if (localStorage.getItem("noteId") === null) {
+                        localStorage.setItem("noteId", noteId)
+                    }
+                    else {
+                        noteId = localStorage.getItem("noteId")
+                    }
+                    noteId++
+                    localStorage.setItem("noteId", noteId)
+                    newNote.setAttribute("id", noteId)
+                    myFoldersString = JSON.stringify(myFoldersLocalStorage)
+                    localStorage.setItem("MyFolders", myFoldersString)
+                    // deleting notes
+                    deleteNoteBtn.addEventListener('click', () => {
+                        if (newNote && newNote.parentNode) {
+                            newNote.parentNode.removeChild(newNote)
+                            removeNoteFromLibrary(note.noteId)
+                        
+                            myFoldersString = JSON.stringify(myFoldersLocalStorage)
+                            localStorage.setItem("MyFolders", myFoldersString)
+                        }
+                    })
+                    // changing notes' content
+                    toolTipSpan.addEventListener("dblclick", (e) => {
+                        let oldVal = txtNote
+                        let newVal = prompt("Enter new description:")  
+                        if (newVal === "") {
+                            toolTipSpan.innerHTML = oldVal
+                        } 
+                        else if (newVal) {
+                            toolTipSpan.innerHTML = txtNote = newVal
+                            note.txtNote = newVal
+
+                            myFoldersString = JSON.stringify(myFoldersLocalStorage)
+                            localStorage.setItem("MyFolders", myFoldersString)
+                        } 
+                        else {
+                            toolTipSpan.innerHTML = oldVal
+                        }
+                    })
+
+                    function removeNoteFromLibrary(noteId) {
+                        myFoldersLocalStorage[i].notes = myFoldersLocalStorage[i].notes.filter((note) => note.noteId !== noteId)
+                    }
+                    // Event listener to change folder's name
+                    // folderName.addEventListener("dblclick", () => {
+                    //     let oldVal = titleFolder
+                    //     let newVal = prompt("Please enter a new folder name:")  
+                    //     if (newVal === "") {
+                    //         folderName.innerHTML = oldVal
+                    //     }else if (newVal) {
+                    //         folderName.innerHTML = titleFolder = newVal
+                    //         myFoldersLocalStorage[i].folderName = newVal
+
+                    //         myFoldersString = JSON.stringify(myFoldersLocalStorage)
+                    //         localStorage.setItem("MyFolders", myFoldersString)
+                    //     }else {
+                    //         folderName.innerHTML = oldVal
+                    //     }
+                    //     console.log(myFoldersLocalStorage)
+                    // })
             } 
-            else {
-                folderName.innerHTML = oldVal
-            }
-            console.log(myFoldersLocalStorage)
-        })
+        }
+        return chosenFolder
+        })          
     }
 }    

@@ -14,9 +14,18 @@ controlNotesForm.addEventListener('submit', (e) => {
         alert("Choose a folder you want to save in!")
         return
     }
-    const requiredFolder = myFolders.find((folder) => folder.folderId == chosenFolder)
-    const noteToWrite = createNote()
+    let requiredFolder = myFolders.find((folder) => folder.folderId == chosenFolder)
+    let noteToWrite = createNote()
     requiredFolder.notes.push(noteToWrite)
+    console.log(requiredFolder)
+
+    let myFoldersString = localStorage.getItem("MyFolders")
+    // Store the updated array back in local storage
+    myFoldersString = JSON.stringify(myFolders)
+    localStorage.setItem("MyFolders", myFoldersString)
+    console.log(JSON.parse(localStorage.getItem("MyFolders")))
+    requiredFolder = myFolders.find((folder) => folder.folderId == chosenFolder)
+    
 })
 
 themeBtn.addEventListener('click', () => {

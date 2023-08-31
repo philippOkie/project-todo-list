@@ -45,11 +45,33 @@ export function createNote() {
     const highPrior = document.getElementById('value-3')
     const prior = document.createElement('p')
     newNote.appendChild(prior)
-    let priority = ''
-    priorityChecker(lowPrior, midPrior, highPrior, prior, priority)
+    let priority 
+    if(lowPrior.checked){   
+        priority = 1
+    }else if(midPrior.checked){   
+        priority = 2
+    }else if(highPrior.checked){   
+        priority = 3
+    }else {   
+        priority = 1
+    }
+    console.log(priority)
+    if(priority == 1){   
+        prior.classList.add('lowPrior')
+        prior.innerHTML = "Low Priority"
+    }else if(priority == 2){   
+        prior.classList.add('midPrior')
+        prior.innerHTML = "Mid Priority"
+    }else if(priority == 3){   
+        prior.classList.add('highPrior')
+        prior.innerHTML = "High Priority"
+    }else {   
+        prior.classList.add('lowPrior')
+        prior.innerHTML = "Low Priority"
+    }
         
     const deleteNoteBtn = document.createElement("button")
-    deleteNoteBtn.innerHTML = "Del"
+    deleteNoteBtn.innerHTML = "-"
     deleteNoteBtn.classList.add('delBtn')
     deleteNoteBtn.setAttribute("id", 'deleteNoteBtn')
     newNote.appendChild(deleteNoteBtn)
@@ -91,29 +113,11 @@ export function createNote() {
     return newNoteArr
 }
 
-function dueDateChecker(dateNote, dueDate) {
+export function dueDateChecker(dateNote, dueDate) {
     if (dateNote !== '') {
         return dueDate.innerHTML = dateNote
     }
     else {
         return dueDate.innerHTML = "No due-date!"
-    }
-}
-
-function priorityChecker(lowPrior, midPrior, highPrior, prior, priority) {
-    if(lowPrior.checked)
-    {   
-        return priority = 'Low-Priority', prior.classList.add('lowPrior'), prior.innerHTML = priority
-    }
-    else if(midPrior.checked)
-    {   
-        return priority = 'Mid-Priority', prior.classList.add('midPrior'), prior.innerHTML = priority
-    }
-    else if(highPrior.checked)
-    {   
-        return priority = 'High-Priority', prior.classList.add('highPrior'), prior.innerHTML = priority
-    }
-    else {   
-        return priority = "Low-Priority", prior.classList.add('lowPrior'), prior.innerHTML = priority
     }
 }
