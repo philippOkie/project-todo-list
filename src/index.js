@@ -1,7 +1,7 @@
 import './styles/main.scss'
 import {changeTheme, r, themeBtn} from './uiModule.js'
-import {Note, controlNotesForm, notesContainer, noteId, active, createNote} from './noteModule.js'
-import {Folder, folderId, folderContainer, currFolder, controlFolderForm, createFolder, chosenFolder, myFolders, folderName, showFolders} from './folderModule.js'
+import {controlNotesForm, createNote} from './noteModule.js'
+import {controlFolderForm, createFolder, chosenFolder, myFolders, showFolders} from './folderModule.js'
 
 controlFolderForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -18,7 +18,7 @@ controlNotesForm.addEventListener('submit', (e) => {
     let noteToWrite = createNote()
     requiredFolder.notes.push(noteToWrite)
     console.log(requiredFolder)
-
+    // location.reload()
     let myFoldersString = localStorage.getItem("MyFolders")
     // Store the updated array back in local storage
     myFoldersString = JSON.stringify(myFolders)

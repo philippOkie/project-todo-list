@@ -1,4 +1,4 @@
-import {priorityChecker, dueDateChecker, createNote} from './noteModule.js'
+import {dueDateChecker} from './noteModule.js'
 
 export const folderContainer = document.getElementById('folderContainer')
 export const currFolder = document.getElementById('currFolder')
@@ -166,6 +166,7 @@ export function showFolders() {
             while (notesContainer.children.length > 1) {
                 notesContainer.lastChild.remove()
             }          
+            myFoldersLocalStorage = myFolders
             for (let note of myFoldersLocalStorage[i].notes) {
                 let titleNote = note.titleNote
                 let txtNote = note.txtNote

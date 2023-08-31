@@ -14,7 +14,6 @@ export class Note {
     }
 }
 
-let arrayOfNotes = []
 export function createNote() {    
     const newNote = document.createElement('div')
     notesContainer.appendChild(newNote)
