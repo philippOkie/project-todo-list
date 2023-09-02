@@ -1,4 +1,5 @@
 # Project Todo List
+![screencapture-file-C-Users-Philip-Downloads-index-1-html-2023-09-02-14_39_44](https://github.com/philippOkie/project-todo-list/assets/112265779/ae73d03d-d064-4ab9-8d77-daba43511b1d)
 
 ## Overview
 This is a simple todo list application built using modern web development technologies. The app allows users to create, read, update, and delete tasks and folders in which we can store our tasks.
