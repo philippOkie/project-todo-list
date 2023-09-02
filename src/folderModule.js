@@ -87,9 +87,9 @@ export function createFolder() {
     );
     chosenFolder = folderToArr.folderId;
     console.log(chosenFolder, folderToArr);
-    location.reload();
     return chosenFolder;
   });
+  location.reload();
   controlFolderForm.reset();
 }
 

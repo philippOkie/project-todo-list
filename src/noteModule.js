@@ -96,7 +96,7 @@ export function createNote() {
   toolTipSpan.addEventListener("dblclick", () => {
     let oldVal = txtNote;
     let newVal = prompt("Enter new description:");
-    if (newVal === "") {
+    if (newVal === "") { 
       toolTipSpan.innerHTML = oldVal;
     } else if (newVal) {
       toolTipSpan.innerHTML = txtNote = newVal;
